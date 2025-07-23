@@ -1,6 +1,6 @@
 # simple c calc
 ## folder structure
-- ReadMe.md
+- README.md
 - Makefile
 - src
     - .c source files
@@ -35,4 +35,4 @@ ___
 #### parsing.h
 #### math.h
 ### Makefile
-### ReadMe.md
+### README.md
