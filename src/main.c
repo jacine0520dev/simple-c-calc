@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "io.h"
-//#include "parsing.h"
+#include "parsing.h"
 //#include "math.h"
 
 int main(int argc, char* argv[]) {
-    char *input = promptUser("Wright something here... ");
-    if (input != NULL){
-        printf("You wrote: %s\n", input);
+    char *input = promptUser("Write an operation... ");
+
+    if (input != NULL && invalidCharsCheck(input)){
+        printf("Your opperation: %s\n", input);
         free(input);
     }
 

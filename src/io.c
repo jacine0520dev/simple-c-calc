@@ -26,7 +26,7 @@ char *promptUser(char prompt[]){
     buffer[strSize] = '\0';
 
     //transefer my string from my buffer to a proper sized string
-    char *input = malloc (strSize + 1);
+    char *input = malloc(strSize + 1);
     for (int i = 0; i < strSize; i++) {
         input[i] = buffer[i];
     }
