@@ -1,21 +1,32 @@
+#include <stddef.h>
+#include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include "parsing.h"
 
-bool invalidCharsCheck(char *opperation){
-    bool isInvalid = false;
-    char validChars[19] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '(', ')', '.', ',', ' '};
+char *parseOpp(char *opp){
+    char nums[12] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', ',',};
+    char opps[4] = {'+', '-', '*', '/'};
+    char *buf = {0};
 
-    for (size_t i = 0; i <= strlen(opperation); i++){
-        for (size_t j = 0; j <= strlen(validChars); j++) {
-            if (opperation[i] == validChars[j]){
-                isInvalid = false;
+    for(size_t i = 0; i <= strlen(opp); i++){
+        for(size_t j = 0; i <= strlen(nums); j++){
+            if(opp[i] == nums[j]){
+                buf[i] = opp[i];
                 break;
             }
-            else{
-                isInvalid = true;
+            else if(opp[i] != nums[j] && i == 0 && j == strlen(nums)){
+                printf("An operation needs to start with a number (negative nums are not done)!");
             }
+            else if(opp[i] != nums[j] && j == strlen(nums)) {
+                for(size_t j = 0; j <= strlen(buf); j++){
+                    //
+                }
+            }
+        }    
+
+        for (size_t i = 0; i <= strlen(opps); i++) {
+
         }
     }
-    return isInvalid;
 }
