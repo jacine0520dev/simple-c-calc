@@ -2,6 +2,6 @@
 #define PARSING_H_
 
 //declaring parsing.c functions
-bool invalidCharsCheck(char *opperation);
+bool parseOpe(char *ope);
 
 #endif //PARSING_H_
