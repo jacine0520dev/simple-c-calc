@@ -2,39 +2,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 #include "parsing.h"
 
-char *parseOpp(char *opp){
-    char *oppArr = malloc(100);
-    char nums[12] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', ',',};
-    char opps[4] = {'+', '-', '*', '/'};
-    char *buf = {0};
-    size_t count = 0;
 
+char **parseOpp(char *opp){
+    char **oppArr = NULL;
+    char nums[11] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
+    char opps[4] = {'+', '-', '*', '/'};
+    size_t bufSize = 100;
+    size_t bufCount = 0;
+    size_t parseCount = 0;
+
+    //loop through the opperation
     for(size_t i = 0; i <= strlen(opp); i++){
-        for(size_t j = 0; i <= strlen(nums); j++){
+        char *buf = malloc(bufSize * sizeof(char));
+
+        //check for nums
+        for(size_t j = 0; j <= strlen(nums); j++){
             if(opp[i] == nums[j]){
-                buf[i] = opp[i];
+                buf[bufCount] = opp[i];
+                bufCount++;
                 break;
             }
-            else if(opp[i] != nums[j] && i == 0 && j == strlen(nums)){
-                printf("An operation needs to start with a number (negative nums are not done)!");
+            //if the first char of an operation is not a number return null and print an error message
+            else if(i == 0 && opp[i] != nums[j] && j >= strlen(nums)){
+                printf("ERROR! An opperation needs to start with a \"number\"!");
+                return NULL;
             }
-            else if(opp[i] != nums[j] && j == strlen(nums)) {
-                for(size_t j = 0; j <= strlen(buf); j++){
-                    if(count == sizeof(oppArr)){
-                        printf("The opperation is too big!");
-                    }
-                    if(sizeof(buf) == sizeof(oppArr)){
-                        printf("You have a number that is too big");
-                    }
-                    oppArr[count] = malloc(100);
-                    oppArr[count] = buf[j];
-                    count++;
+        }
+        //check for opps
+        for(size_t j = 0; j <= strlen(opps); j++){
+            //if there is an opperator end the first parse and add a parse for the opperator
+            if(opp[i] == opps[j]){
+                realloc(oppArr, parseCount * sizeof(char*));
+                oppArr[parseCount] = malloc(strlen(buf));
+                for(size_t k = 0; k <= strlen(oppArr[parseCount]); k++){
+                    oppArr[parseCount][k] = buf[k];
                 }
+                parseCount++;
+                realloc(oppArr, parseCount * sizeof(char*));
+                oppArr[parseCount] = malloc(sizeof(opps[j]));
+                oppArr[parseCount][0] = opps[j];
+                parseCount++;
+                break;
             }
-        }    
+        }
     }
+
     return oppArr;
 }
