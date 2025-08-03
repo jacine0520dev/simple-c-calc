@@ -20,7 +20,7 @@ char **parseOpe(char *ope){
 
         //check for number characters
         for(size_t j = 0; j <= strlen(nums); j++){
-            //if there are fill the first index of the buffer
+            //if there are fill the buffer
             if(ope[i] == nums[j]){
                 buf[bufCount] = ope[i];
                 bufCount++;
