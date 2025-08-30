@@ -32,7 +32,7 @@ char **parseOpe(char *ope){
                 return NULL;
             }
         }
-        //check for operstors
+        //check for operator characters
         for(size_t j = 0; j <= strlen(opes); j++){
             //if there is an operator end the number tokken and add a tokken for the opeerator
             if(ope[i] == opes[j]){
