@@ -142,7 +142,7 @@ char **opeToTok(char *operation){
 		    //resize the token array
 			    char **tmp = realloc(tokArr, (tokCount +1) * sizeof(char *));
 			    if(!tmp) {
-				    printf("Error! Failed to realocate tokArr on tokCount='%ld' (last char)!\n", tokCount);
+				    printf("Error! Failed to realocate tokArr on tokCount='%zu' (last char)!\n", tokCount);
 				    return NULL;
 			    }
 			    tokArr = tmp;
@@ -178,7 +178,7 @@ char **opeToTok(char *operation){
 			    //resize the token array
 			    char **tmp = realloc(tokArr, tokCount * sizeof(char *));
 			    if(!tmp) {
-				    printf("Error! Failed to realocate tokArr on tokCount='%ld'!\n", tokCount);
+				    printf("Error! Failed to realocate tokArr on tokCount='%zu'!\n", tokCount);
 				    return NULL;
 			    }
 			    tokArr = tmp;
