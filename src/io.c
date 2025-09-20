@@ -1,36 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <string.h>
 #include "io.h"
+#include "logic.h"
 
-/*promptUser: prompts the user for an input with a custom prompt and returns that input
-parameter: prompt (string) is just the question asking for the user input
-variable: buffer (string) is just a buffer for my input
-variable: strSize (int) is the size of the string in the buffer
-return: returns an input (string)*/
+/*promptUser: prompts the user for an input with a custom prompt
+param: prompt (string) question prompting the user for input
+var: buffer (string) buffer for the input
+var: strSize (int) size of the string in the buffer
+var: input (char*)
+return: (char *) returns the user input*/
 char *promptUser(char prompt[]){
-    //setting size of the buffer
-    size_t bufSize = 1000
     //print the prompt
     printf("%s", prompt);
 
+	//initializing the input buffer
+    char buffer[2000] = {0};
     //getting user inpuet and writing it to a buffer
-    char buffer[bufSize] = {0};
     if(fgets(buffer, sizeof(buffer), stdin) == NULL){
-        return NULL;
+		printf("Error! NULL input received!");
+        return NULL; //return NULL if fgets is null
     }
     
-    //clearning the buffer and saving the string size
-    int strSize = strcspn(buffer, "\n");
-    buffer[strSize] = '\0';
+    //getting buffer size
+    size_t strSize = strlen(buffer);
+	//null terminting the buffer
+    buffer[strSize - 1] = '\0';
 
-    //transefer my string from my buffer to a proper sized string
+	//allocating memory for input
     char *input = malloc(strSize + 1);
-    for (int i = 0; i < strSize; i++) {
-        input[i] = buffer[i];
-    }
-    input[strSize] = '\0';
+    //transefer string from buffer to input
+    strcpy(input, buffer);
 
     //return the input
     return input;
+}
+
+//for testing!!!!!!!!
+void tokArrPrinter(char **tokArr){
+	for(size_t i = 0; tokArr[i][0] != '\n'; i++){
+		printf("%s\n", tokArr[i]);
+	}
 }

@@ -3,5 +3,6 @@
 
 //declaring io.c functions
 char *promptUser(char prompt[]);
+void tokArrPrinter(char **tokArr);
 
 #endif //IO_H_
