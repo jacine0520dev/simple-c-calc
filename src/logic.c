@@ -27,7 +27,7 @@ bool isValidOpe(char *operation){
 
 	//check if the operation excedes the max size
 	if(strlen(operation) > OPERATION_MAX_SIZE){
-		printf("Error! It's too big sempai!!\n");
+		printf("Error! Your operation excedes the limit of 1000 characters!\n");
 		return false;
 	}
 	
