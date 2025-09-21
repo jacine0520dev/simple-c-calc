@@ -125,7 +125,6 @@ char **opeToTok(char *operation){
 	for(size_t i = 0; i < operationSize; i++){
 		//updates the buffer position
 		bufPos++;
-
         //initializing operator flag
         bool isOperator = false;
 
@@ -167,8 +166,6 @@ char **opeToTok(char *operation){
 		
 	    //if the current char is an operator finish the current token
 	    for(size_t j = 0; j < OPERATORS_SIZE; j++){
-            //inisilizing isOperator
-
 		    if(operation[i] == OPERATORS[j]){
 			    //null terminates the buffer
 			    buffer[bufPos] = '\0';
