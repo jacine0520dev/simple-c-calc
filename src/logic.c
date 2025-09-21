@@ -25,6 +25,13 @@ bool isValidOpe(char *operation){
 	//initializing operation size
 	size_t operationSize = strlen(operation);
 
+	//remove all spaces
+	for(size_t i = 0; i < operationSize; i++){
+		if(operationSize[i] == ' '){
+			removeChar(operation, i);
+		}
+	}
+
 	//check if the operation excedes the max size
 	if(strlen(operation) > OPERATION_MAX_SIZE){
 		printf("Error! Your operation excedes the limit of 1000 characters!\n");
@@ -41,7 +48,7 @@ bool isValidOpe(char *operation){
 			}
 		}
 		if(match == false){
-			printf("Error! Non valid character used(%c)!\n", operation[i]);
+			printf("Error! Non valid character used (%c)!\n", operation[i]);
 			return false;
 		}
 	}
@@ -206,6 +213,39 @@ char **opeToTok(char *operation){
         if(!isOperator){
 		    buffer[bufPos - 1] = operation[i];
         }
+	}
+}
+
+/*removeChar: remavoves a character on specified index
+param: str (char *) the string to be modified
+param: str (size_t) index of character to be removed
+var: strSize (size_t) size of the string
+var: strBuffer (char) string buffer*/
+void removeChar(char *str, size_t index){
+	//get the size of the string
+	size_t strSize = strlen(str) + 1;
+	//create a buffer for the string
+	char strBuffer[strSize] = {0};
+
+	//copy the string before the space into the buffer
+	for(size_t i = 0; i < index; i++){
+		strBuffer[i] = str[i];
+	}
+	//copy the string to the buffer skiping the indexed space by offceting the copy
+	for(size_t i = index; i < strSize; i++){
+		strBuffer[i] = str[i + 1]
+	}
+	
+	//modifing the original string
+	for(size_t i = 0; i < strSize; i++){
+		str[i] = strBuffer[i + 1];
+	}
+	char tmp[strSize] = {0};
+	strcpy(tmp, str)
+	tmp = realloc(tmp, strSize - 1) 
+	if(!tmp){
+		printf("Error! Failed to resize the operation in 'removeSpace()'");
+		return;
 	}
 }
 
