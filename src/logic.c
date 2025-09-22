@@ -27,7 +27,8 @@ bool isValidOpe(char *operation){
 
 	//remove all spaces
 	for(size_t i = 0; i < operationSize; i++){
-		if(operationSize[i] == ' '){
+		if(operation[i] == ' '){
+            printf("Removing space on index %zu...\n", i);
 			removeChar(operation, i);
 		}
 	}
@@ -225,7 +226,7 @@ void removeChar(char *str, size_t index){
 	//get the size of the string
 	size_t strSize = strlen(str) + 1;
 	//create a buffer for the string
-	char strBuffer[strSize] = {0};
+	char *strBuffer = malloc(strSize * sizeof(char));
 
 	//copy the string before the space into the buffer
 	for(size_t i = 0; i < index; i++){
@@ -233,19 +234,18 @@ void removeChar(char *str, size_t index){
 	}
 	//copy the string to the buffer skiping the indexed space by offceting the copy
 	for(size_t i = index; i < strSize; i++){
-		strBuffer[i] = str[i + 1]
+		strBuffer[i] = str[i + 1];
 	}
 	
 	//modifing the original string
 	for(size_t i = 0; i < strSize; i++){
 		str[i] = strBuffer[i + 1];
 	}
-	char tmp[strSize] = {0};
-	strcpy(tmp, str)
-	tmp = realloc(tmp, strSize - 1) 
+	char *tmp = malloc(strSize * sizeof(char));
+	strcpy(tmp, str);
+	tmp = realloc(tmp, strSize - 1);
 	if(!tmp){
-		printf("Error! Failed to resize the operation in 'removeSpace()'");
-		return;
+		printf("Error! Failed to resize the operation in 'removeChar()'");
 	}
 }
 

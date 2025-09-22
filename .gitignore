@@ -1,0 +1,12 @@
+# Build directories
+build/
+bin/
+
+# Object files
+*.o
+
+# Executables
+*.exe
+
+# Logs or temporary files
+*.log
