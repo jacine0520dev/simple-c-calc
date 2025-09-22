@@ -1,12 +1,12 @@
-# Build directories
+#Build directories
 build/
 bin/
 
-# Object files
+#Object files
 *.o
 
-# Executables
+#Executables
 *.exe
 
-# Logs or temporary files
-*.log
+#Cashe
+.cache/
