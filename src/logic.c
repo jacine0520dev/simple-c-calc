@@ -242,7 +242,7 @@ void removeChar(char *str, size_t index){
 	for(size_t i = 0; i < strSize; i++){
 		strBuffer[i] = str[i + 1];
 	}
-	tmp = realloc(str, (strSize - 1) * sizeof(char));
+	char *tmp = realloc(str, (strSize - 1) * sizeof(char));
 	if(!tmp){
 		printf("Error! Failed to resize the operation in 'removeChar()'");
 	}
