@@ -235,12 +235,12 @@ void removeChar(char *str, size_t index){
 	}
 	//copy the string to the buffer skiping the indexed space by offceting the copy
 	for(size_t i = index; i < strSize; i++){
-		strBuffer[i] = str[i + 1];
+		[i] = str[i + 1];
 	}
 	
 	//modifing the original string
 	for(size_t i = 0; i < strSize; i++){
-		strBuffer[i] = str[i + 1];
+		str[i] = strBuffer[i];
 	}
 	char *tmp = realloc(str, (strSize - 1) * sizeof(char));
 	if(!tmp){
