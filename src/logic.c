@@ -30,6 +30,7 @@ bool isValidOpe(char *operation){
 		if(operation[i] == ' '){
             printf("Removing space on index %zu...\n", i);
 			removeChar(operation, i);
+			i--;
 		}
 	}
 
