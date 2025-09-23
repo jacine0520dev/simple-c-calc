@@ -248,6 +248,7 @@ void removeChar(char *str, size_t index){
 	if(!tmp){
 		printf("Error! Failed to resize the operation in 'removeChar()'");
 	}
+	strcpy(str, tmp);
 }
 
 //tokToTree()
