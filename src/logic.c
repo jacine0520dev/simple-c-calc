@@ -240,15 +240,13 @@ void removeChar(char *str, size_t index){
 	
 	//modifing the original string
 	for(size_t i = 0; i < strSize; i++){
-		str[i] = strBuffer[i + 1];
+		strBuffer[i] = str[i + 1];
 	}
-	char *tmp = malloc(strSize * sizeof(char));
-	strcpy(tmp, str);
-	tmp = realloc(tmp, strSize - 1);
+	tmp = realloc(str, (strSize - 1) * sizeof(char));
 	if(!tmp){
 		printf("Error! Failed to resize the operation in 'removeChar()'");
 	}
-	strcpy(str, tmp);
+	tmp = str;
 }
 
 //tokToTree()
