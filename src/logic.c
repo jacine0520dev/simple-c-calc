@@ -235,7 +235,7 @@ void removeChar(char *str, size_t index){
 	}
 	//copy the string to the buffer skiping the indexed space by offceting the copy
 	for(size_t i = index; i < strSize; i++){
-		[i] = str[i + 1];
+		strBuffer[i] = str[i + 1];
 	}
 	
 	//modifing the original string
